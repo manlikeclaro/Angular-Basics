@@ -7,6 +7,8 @@ import {Component, OnInit} from '@angular/core';
 })
 
 export class ServerComponent {
+  allowNewServers = false;
+  username = ''
   content = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum, modi?";
   outputContent: string[] = [];
   data = [
@@ -16,10 +18,20 @@ export class ServerComponent {
     'Lorem ipsum dolor sit amet - 4',
   ];
 
+  constructor() {
+    setTimeout(() => {
+      this.allowNewServers = !this.allowNewServers
+    }, 5000);
+  }
+
   loadstate = () => {
     this.data.forEach(element => {
       this.outputContent.push(element);
     });
+  }
+
+  resetUser = () => {
+    this.username = ''
   }
 
   ngOnInit() {
